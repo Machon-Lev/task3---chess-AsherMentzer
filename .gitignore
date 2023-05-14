@@ -1,0 +1,6 @@
+#
+# Untrack files
+#
+
+.vs/
+out/
