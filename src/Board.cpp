@@ -45,11 +45,11 @@ Board::~Board() {
 }
 Piece* Board::getPiece(int row, int col)
 {
-	return nullptr;
+	return _gameBoard[row][col];
 }
 bool Board::getPlayerColor()
 {
-	return false;
+	return _white_turn;
 }
 void Board::initRegularBoard() {
 
@@ -85,7 +85,7 @@ Location Board::getKingLocation(bool player) {
 	return (player) ? _white_king->getLocation() : _black_king->getLocation();
 }
 
-int Board::do_move(Location src_location,Location dst_location) {
+int Board::do_command(Location src_location,Location dst_location) {
 
 
 	Piece* source = _gameBoard[src_location.row][src_location.column];
@@ -97,13 +97,13 @@ int Board::do_move(Location src_location,Location dst_location) {
 		return 12;
 	if (target != nullptr && target->getColor() == _white_turn)
 		return 13;
-	if (_check_mate == _white_turn)
+	if (_check_mate)
 		return 31;
 	if (!source->isValidMove(dst_location, this))
 		return 21;
 	if (isInCheck(_white_turn) && isCheckMate(_white_turn))
 	{
-		_check_mate = _white_turn;
+		_check_mate = true;
 		return 31;
 	}
 	movePiece(src_location,dst_location);
@@ -155,6 +155,9 @@ bool Board::isInCheck(bool player) {
 			Piece* p = _gameBoard[i][j];
 			if (p != nullptr && p->getColor() != player)
 			{
+				if (i == 0 && j == 2) {
+					int x = 0;
+				}
 				auto p_moves = p->getAllValidMoves(this);
 				if (std::find(p_moves.begin(), p_moves.end(), king_location) != p_moves.end())
 					return true;
