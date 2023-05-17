@@ -1,16 +1,21 @@
 #include "Piece.h"
 
+Piece::Piece(bool white, Location location):_white(white),_location(location){}
 
-Piece::Piece(char PieceColor) : _pieceColor(PieceColor) {}
+Piece::~Piece(){}
 
-Piece::~Piece() {}
 
-char Piece::GetColor() {return _pieceColor;}
+bool Piece::getColor()
+{
+	return _white;
+}
 
-bool Piece::IsLegalMove(int iSrcRow, int iSrcCol, int iDestRow, int iDestCol, Piece* GameBoard[8][8]) {
-        Piece* qpDest = GameBoard[iDestRow][iDestCol];
-        if ((qpDest == 0) || (_pieceColor != qpDest->GetColor())) {
-            return AreSquaresLegal(iSrcRow, iSrcCol, iDestRow, iDestCol, GameBoard);
-        }
-        return false;
+Location Piece::getLocation()
+{
+	return _location;
+}
+
+void Piece::setLocation(Location new_location)
+{
+	_location = new_location;
 }
