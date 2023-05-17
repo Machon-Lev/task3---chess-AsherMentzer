@@ -26,21 +26,11 @@ int main()
 		41 - the last movement was legal and cause check 
 		42 - the last movement was legal, next turn 
 		*/
-
-		/* 
-		{
-			
-			
-			// put your code here instead that code
-			cout << "code response >> ";
-			cin >> codeResponse;
-		}
-		*/
 		int src_row = res[0] - 'a';
 		int src_col = res[1] - '0' - 1;
 		int dst_row = res[2] - 'a';
 		int dst_col = res[3] - '0' - 1;
-		codeResponse = gameBoard.do_move(Location(src_row,src_col), Location(dst_row, dst_col));
+		codeResponse = gameBoard.do_command(Location(src_row,src_col), Location(dst_row, dst_col));
 		a.setCodeResponse(codeResponse);
 		res = a.getInput(); 
 	}
