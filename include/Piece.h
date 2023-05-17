@@ -15,7 +15,7 @@ protected:
     Location _location;// location of the piece on the game board
 public:
     Piece(bool white, Location location);
-    ~Piece();
+    virtual ~Piece();
     /**
      * @brief Checks if the piece can move to the specified destination location.
      *
