@@ -105,7 +105,7 @@ std::vector<Location> Queen::getAllValidMoves(Board* gameBoard)
 
 	}
 	//move diagonal up left
-	for (int i = _location.row + 1, j = _location.column - 1; i < ROW_SIZE && j < COL_SIZE; ++i, --j) {
+	for (int i = _location.row + 1, j = _location.column - 1; i < ROW_SIZE && j >=0; ++i, --j) {
 		Piece* p = gameBoard->getPiece(i, j);
 		//empty spot
 		if (p == nullptr) {
@@ -123,7 +123,7 @@ std::vector<Location> Queen::getAllValidMoves(Board* gameBoard)
 
 	}
 	//move diagonal down right
-	for (int i = _location.row - 1, j = _location.column + 1; i < ROW_SIZE && j < COL_SIZE; --i, ++j) {
+	for (int i = _location.row - 1, j = _location.column + 1; i >= 0 && j < COL_SIZE; --i, ++j) {
 		Piece* p = gameBoard->getPiece(i, j);
 		//empty spot
 		if (p == nullptr) {
@@ -141,7 +141,7 @@ std::vector<Location> Queen::getAllValidMoves(Board* gameBoard)
 
 	}
 	//move diagonal down left
-	for (int i = _location.row - 1, j = _location.column - 1; i < ROW_SIZE && j < COL_SIZE; --i, --j) {
+	for (int i = _location.row - 1, j = _location.column - 1; i >= 0 && j >= 0; --i, --j) {
 		Piece* p = gameBoard->getPiece(i, j);
 		//empty spot
 		if (p == nullptr) {
