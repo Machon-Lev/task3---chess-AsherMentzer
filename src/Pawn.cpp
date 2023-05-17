@@ -19,7 +19,6 @@ std::vector<Location> Pawn::getAllValidMoves(Board* gameBoard)
 	if (!this->getColor()) {
 		row_direction = -1;
 	}
-	std::vector<Location> valid_moves = std::vector<Location>();
 	//move up Straight
 	if (gameBoard->getPiece(_location.row + row_direction, _location.column) == nullptr) {
 		valid_moves.push_back(Location(_location.row + row_direction, _location.column));
@@ -30,7 +29,7 @@ std::vector<Location> Pawn::getAllValidMoves(Board* gameBoard)
 		valid_moves.push_back(Location(_location.row + row_direction, _location.column + 1));
 	}
 	//move up left
-	Piece* p = gameBoard->getPiece(_location.row + row_direction, _location.column - 1);
+	p = gameBoard->getPiece(_location.row + row_direction, _location.column - 1);
 	if (p != nullptr && p->getColor() != this->getColor()) {
 		valid_moves.push_back(Location(_location.row + row_direction, _location.column - 1));
 	}
@@ -39,8 +38,9 @@ std::vector<Location> Pawn::getAllValidMoves(Board* gameBoard)
 	if (_not_moved) {
 		Piece* p = gameBoard->getPiece(_location.row + (row_direction*2), _location.column);
 		if (p == nullptr) {
-			valid_moves.push_back(Location(_location.row + (row_direction * 2), _location.column);
+			valid_moves.push_back(Location(_location.row + (row_direction * 2), _location.column));
 		}
 	}
+	return valid_moves;
 }
 

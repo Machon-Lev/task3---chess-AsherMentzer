@@ -2,7 +2,6 @@
 #include "Chess.h"
 #include "Board.h"
 
-//int generateCodeResponse(int src_row, int src_col, int dst_row, int dst_col, Board* game_board);
 int main()
 {
 	string board = "RNBQKBNRPPPPPPPP################################pppppppprnbqkbnr"; 
@@ -38,14 +37,3 @@ int main()
 	cout << endl << "Exiting " << endl; 
 	return 0;
 }
-
-
-
-//int generateCodeResponse(int src_row, int src_col, int dst_row, int dst_col, Board* game_board) {
-//	Piece* src_piece = game_board->getPiece(src_row, src_col);
-//	if (src_piece == 0) {
-//		return 11;
-//	}
-//
-//
-//}
