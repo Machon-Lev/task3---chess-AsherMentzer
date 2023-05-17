@@ -6,7 +6,10 @@ Knight::~Knight(){}
 
 bool Knight::isValidMove(Location dst_location, Board* gameBoard)
 {
-	return false;
+	std::vector<Location> valid_moves = getAllValidMoves(gameBoard);
+	if (std::find(valid_moves.begin(), valid_moves.end(), dst_location) == valid_moves.end())
+		return false;
+	return true;
 }
 
 std::vector<Location> Knight::getAllValidMoves(Board* gameBoard)
